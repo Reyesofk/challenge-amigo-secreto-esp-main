@@ -2,7 +2,7 @@
 function agregarAmigo(){
     let nombreAmigo = document.getElementById('amigo').value;
     
-    
+
     console.log(nombreAmigo);
     alert("Tocaste el Boton");
     return;
