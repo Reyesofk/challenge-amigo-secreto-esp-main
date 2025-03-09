@@ -1,64 +1,109 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
-let nombreAmigo; 
+//let nombreAmigo; 
 let listadodeAmigos = [];
+let amigoSorteado = [];
+let nombresMaximos = 0;
+//let inputAmigo;
 
 function agregarAmigo(){
     // Obtenemos el nombre del amigo ingresado
-    let nombreAmigo = document.getElementById('amigo').value;
+    let inputAmigo = document.getElementById('amigo');
+    let nombreAmigo = inputAmigo.value.trim();
     
+   
     // Validamos que el valor no se vacio
     if (nombreAmigo === '' ){
         alert("Por favor, ingrese un Nombre");
        // return;
         
     } else {
-        listadodeAmigos.push(nombreAmigo);
-        actualizarRegistroDeAmigos(nombreAmigo);
-        return nombreAmigo;
-
+        // se incluye nombre de amigo al array
+       if (listadodeAmigos.includes(nombreAmigo)) {
+            alert(`el nombre ${nombreAmigo} ya esta en la lista`);
+            limpiarCaja();
+            
+        } else { 
+           listadodeAmigos.push(nombreAmigo);
+           // alert ("amigo ya existe");
+           actualizarRegistroDeAmigos();
+    
     }
-    //console.log(listadodeAmigos);
-    //alert("Tocaste el Boton");
-    //return;
-
     
-    
+}
 
 }
 
+function isEqual(nombreAmigo){
+    return nombreAmigo.tolowerCase();
+}
 
-// agregar elementos a la lista
-//document.getElementById("listaAmigos").appendChild(amigo);
-
-// lipiar cuadro de texto 
-//document.getElementById("amigo").value = "";
 function actualizarRegistroDeAmigos (){
     // Crear elementos en la lista 
     let listado = document.getElementById("listaAmigos");
     listado.innerHTML = "";
     
     listadodeAmigos.forEach(nombreAmigo => {
-        let serie = document.createElement("li");
+        let serie = document.createElement("li");    
         serie.textContent = nombreAmigo;    
         listado.appendChild(serie);
     });
+    limpiarCaja();
     
-    //listaAmigos = document.getElementById("listaAmigos");
-   
+}
 
-    //let listado = document.getElementById("listaAmigos");
-    //listado.innerHTML = nombre;
-    //listado.textContent = nombreAmigo;
-    //.appendChild(nombreAmigo);
-    //Document.getElementById("listaAmigos").appendChild(nombreAmigo);
+function existeNombre(nombreAmigo){
+    for (let i=0; i < listadodeAmigos.length; i++ ){
+        const element = listadodeAmigos[i];
+
+        if (element.trim().tolowerCase() === nombreAmigo.trim().tolowerCase()) {
+            //listadodeAmigos.push(nombreAmigo);
+            //listadodeAmigos.includes(nombreAmigo);
+            //actualizarRegistroDeAmigos();
+            alert("Amigo ya Existe");
+           
+            } else{ 
+                if (listadodeAmigos.includes(nombreAmigo)){
+                    return listadodeAmigos();
+     
+                } else{
+                    listadodeAmigos.push(nombreAmigo);
+                    return nombreAmigo;
+                }    
+
+                //actualizarRegistroDeAmigos();
+
+            }
+           //return true;
+        //return false; 
+
+        } 
+        //return;
+    }
+
+
+// limpiar input 
+function limpiarCaja() {
+    document.querySelector('#amigo').value = '';
 
 }
 
+function  sortearAmigo(){
 
- /*function actualizarListado (persona){
-    let listado = document.querySelector('#listaAmigos');
-    listado.innerHTML += `<li>${persona}</li>`;
+    if (listadodeAmigos.length === 0){
+        alert("la lista esta vacia");
+        return;
+    
+    }
+    let amigoSecretoGenerado = Math.floor(Math.random() * listadodeAmigos.length);
+    let amigoSorteado = listadodeAmigos[amigoSecretoGenerado];
+    let resultadoAmigo = document.getElementById('resultado')
+    resultadoAmigo.innerHTML = `<li>Tu amigo secreto es ${amigoSorteado}</li>`;
 
 
 
-}*/
+
+        nombresMaximos = listadodeAmigos.length;
+
+   
+
+}
