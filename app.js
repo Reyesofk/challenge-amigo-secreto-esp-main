@@ -94,16 +94,19 @@ function  sortearAmigo(){
         return;
     
     }
+    
+    
+    
     let amigoSecretoGenerado = Math.floor(Math.random() * listadodeAmigos.length);
     let amigoSorteado = listadodeAmigos[amigoSecretoGenerado];
     let resultadoAmigo = document.getElementById('resultado')
     resultadoAmigo.innerHTML = `<li>Tu amigo secreto es ${amigoSorteado}</li>`;
 
-
+    
 
 
         nombresMaximos = listadodeAmigos.length;
 
-   
+   return;
 
 }
